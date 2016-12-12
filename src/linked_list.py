@@ -50,3 +50,15 @@ class LinkedList(object):
             current = current.next
         return None
 
+    def remove(self, node):
+        """Remove given node from list."""
+        current = self.head
+        if current.data == node.data:
+            self.head = current.next
+            return True
+        while current.next is not None:
+            if current.next.data == node.data:
+                current.next = current.next.next
+                return True
+            current = current.next
+        raise ValueError("Node not in list.")
