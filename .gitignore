@@ -92,3 +92,4 @@ ENV/
 bin/
 pyvenv.cfg
 lib64
+pip-selfcheck.json
