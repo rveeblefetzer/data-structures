@@ -113,9 +113,19 @@ def test_search_val():
 def test_search_unknown_val():
     """Test to search for element not in list."""
     from linked_list import LinkedList
-    # import pdb; pdb.set_trace()
     test_list2 = LinkedList()
     test_list2.push(4)
     test_list2.push(6)
     test_list2.push(8)
     assert test_list2.search(12) is None
+
+
+def test_remove():
+    """Test for removing element from list."""
+    from linked_list import LinkedList
+    test_list2 = LinkedList()
+    test_list2.push(4)
+    test_list2.push(6)
+    test_list2.push(8)
+    test_list2.remove(6)
+    assert test_list2.head.next.data == 4
