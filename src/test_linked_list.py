@@ -152,3 +152,13 @@ def test_remove_unknown():
     node = Node(8)
     with pytest.raises(ValueError):
         test_list2.remove(node)
+
+
+def test_display():
+    """Test for displaying linked list as tuple."""
+    from linked_list import LinkedList
+    test_list2 = LinkedList()
+    test_list2.push(401)
+    test_list2.push('Python')
+    test_list2.push('Code Fellows')
+    assert test_list2.display() == "('Code Fellows', 'Python', 401)"
