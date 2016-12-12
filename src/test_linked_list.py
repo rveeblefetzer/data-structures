@@ -98,3 +98,12 @@ def test_size_of_empty_list():
     from linked_list import LinkedList
     test_list = LinkedList()
     assert test_list.size() == 0
+
+def test_search_val():
+    """Test to search for, return value."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
+    test_list.push(8)
+    assert test_list.search(6).data == 6
