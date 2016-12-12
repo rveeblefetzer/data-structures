@@ -1,4 +1,5 @@
 """Test for singly linked list from link_list.py."""
+import pytest
 
 
 def test_node_init_data():
@@ -142,3 +143,12 @@ def test_remove_head():
     test_list2.push(8)
     test_list2.remove(node)
     assert test_list2.head.data == 6
+
+
+def test_remove_unknown():
+    """Test for removing unknown element."""
+    from linked_list import LinkedList, Node
+    test_list2 = LinkedList()
+    node = Node(8)
+    with pytest.raises(ValueError):
+        test_list2.remove(node)
