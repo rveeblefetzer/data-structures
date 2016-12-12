@@ -122,21 +122,23 @@ def test_search_unknown_val():
 
 def test_remove():
     """Test for removing element from list."""
-    from linked_list import LinkedList
+    from linked_list import LinkedList, Node
+    node = Node(6)
     test_list2 = LinkedList()
     test_list2.push(4)
     test_list2.push(6)
     test_list2.push(8)
-    test_list2.remove(6)
+    test_list2.remove(node)
     assert test_list2.head.next.data == 4
 
 
 def test_remove_head():
     """Test for removing head element from list."""
-    from linked_list import LinkedList
+    from linked_list import LinkedList, Node
+    node = Node(8)
     test_list2 = LinkedList()
     test_list2.push(4)
     test_list2.push(6)
     test_list2.push(8)
-    test_list2.remove(8)
+    test_list2.remove(node)
     assert test_list2.head.data == 6
