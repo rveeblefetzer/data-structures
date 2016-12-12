@@ -18,6 +18,15 @@ class LinkedList(object):
         self.head = head
 
     def push(self, val):
-        """Create push method."""
+        """Push elements into list."""
         node = Node(val)
+        if self.head is None:
+            self.head = node
+        node.next = self.head
         self.head = node
+
+    def pop(self):
+        """Remove head element and return value."""
+        temp_data = self.head.data
+        self.head = self.head.next
+        return temp_data
