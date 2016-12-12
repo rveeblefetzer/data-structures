@@ -63,5 +63,3 @@ def test_push_to_nonempty_list_next():
     test_list = LinkedList(node)
     test_list.push(4)
     assert test_list.head.next.data == 2
-
-
