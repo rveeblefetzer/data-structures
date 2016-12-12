@@ -63,3 +63,22 @@ def test_push_to_nonempty_list_next():
     test_list = LinkedList(node)
     test_list.push(4)
     assert test_list.head.next.data == 2
+
+
+def test_pop_from_list():
+    """Test that pop removes head from list."""
+    from linked_list import LinkedList, Node
+    node = Node(2)
+    test_list = LinkedList(node)
+    test_list.push(4)
+    test_list.pop()
+    assert test_list.head.data == 2
+
+
+def test_pop_from_list_return_value():
+    """Test that pop returns value of current head from list."""
+    from linked_list import LinkedList, Node
+    node = Node(2)
+    test_list = LinkedList(node)
+    test_list.push(4)
+    assert test_list.pop() == 4
