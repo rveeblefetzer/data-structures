@@ -107,3 +107,12 @@ def test_search_val():
     test_list.push(6)
     test_list.push(8)
     assert test_list.search(6).data == 6
+
+def test_search_unknown_val():
+    """Test to search for element not in list."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
+    test_list.push(8)
+    assert test_list.search(12).data is None
