@@ -16,3 +16,8 @@ class LinkedList(object):
     def __init__(self, head=None):
         """Instantiate objects with a head defaulted to None."""
         self.head = head
+
+    def push(self, val):
+        """Create push method."""
+        node = Node(val)
+        self.head = node

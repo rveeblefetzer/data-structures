@@ -41,10 +41,9 @@ def test_linked_list_init_node():
 
 def test_push_to_empty_list():
     """Test that a new node can be added to an empty list."""
-    from linked_list import LinkedList, Node
+    from linked_list import LinkedList
     test_list = LinkedList()
-    node = Node(2)
-    test_list.push(node)
-    assert test_list.head == node
+    test_list.push(7)
+    assert test_list.head.data == 7
 
 
