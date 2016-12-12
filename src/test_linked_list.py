@@ -18,16 +18,16 @@ def test_node_init_next_none():
 def test_node_init_next_node():
     """Test that Node constructor works with non empty next."""
     from linked_list import Node
-    temp = Node(2)
-    temp2 = Node(1, temp)
-    assert temp2.next == temp
+    node = Node(2)
+    node2 = Node(1, node)
+    assert node2.next == node
 
 
 def test_linked_list_init_none():
     """Test that link_list initializes empty."""
     from linked_list import LinkedList
-    temp = LinkedList()
-    assert temp.head is None
+    test_list = LinkedList()
+    assert test_list.head is None
 
 
 def test_linked_list_init_node():
@@ -35,16 +35,33 @@ def test_linked_list_init_node():
     from linked_list import LinkedList, Node
     # from linked_list import Node
     node = Node(2)
-    temp = LinkedList(node)
-    assert temp.head == node
+    test_list = LinkedList(node)
+    assert test_list.head == node
 
 
 def test_push_to_empty_list():
     """Test that a new node can be added to an empty list."""
-    from linked_list import LinkedList, Node
+    from linked_list import LinkedList
     test_list = LinkedList()
+    test_list.push(7)
+    assert test_list.head.data == 7
+
+
+def test_push_to_nonempty_list_head():
+    """Test that push adds to the front of a list."""
+    from linked_list import LinkedList, Node
     node = Node(2)
-    test_list.push(node)
-    assert test_list.head == node
+    test_list = LinkedList(node)
+    test_list.push(4)
+    assert test_list.head.data == 4
+
+
+def test_push_to_nonempty_list_next():
+    """Test that push adds to the front of a list."""
+    from linked_list import LinkedList, Node
+    node = Node(2)
+    test_list = LinkedList(node)
+    test_list.push(4)
+    assert test_list.head.next.data == 2
 
 
