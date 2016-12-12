@@ -26,12 +26,25 @@ def test_node_init_next_node():
 def test_linked_list_init_none():
     """Test that link_list initializes empty."""
     from linked_list import LinkedList
-    temp = LinkedList
+    temp = LinkedList()
     assert temp.head is None
 
-def test_linked_list_init_none():
+
+def test_linked_list_init_node():
     """Test that link_list initializes empty."""
     from linked_list import LinkedList, Node
-    node = node(2)
+    # from linked_list import Node
+    node = Node(2)
     temp = LinkedList(node)
     assert temp.head == node
+
+
+def test_push_to_empty_list():
+    """Test that a new node can be added to an empty list."""
+    from linked_list import LinkedList, Node
+    test_list = LinkedList()
+    node = Node(2)
+    test_list.push(node)
+    assert test_list.head == node
+
+
