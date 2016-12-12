@@ -30,3 +30,14 @@ class LinkedList(object):
         temp_data = self.head.data
         self.head = self.head.next
         return temp_data
+
+    def size(self):
+        """Return length of list."""
+        count = 0
+        current = self.head
+        if self.head is None:
+            return 0
+        while current.next is not None:
+            count += 1
+            current = current.next
+        return count + 1
