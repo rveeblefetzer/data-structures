@@ -20,8 +20,6 @@ class LinkedList(object):
     def push(self, val):
         """Push elements into list."""
         node = Node(val)
-        if self.head is None:
-            self.head = node
         node.next = self.head
         self.head = node
 
@@ -45,8 +43,10 @@ class LinkedList(object):
     def search(self, val):
         """Return node with data value of val."""
         current = self.head
+        # import pdb; pdb.set_trace()
         while current is not None:
             if current.data == val:
                 return current
             current = current.next
         return None
+
