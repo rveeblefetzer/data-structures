@@ -149,6 +149,9 @@ def test_remove_unknown():
     """Test for removing unknown element."""
     from linked_list import LinkedList, Node
     test_list2 = LinkedList()
+    test_list2.push(4)
+    test_list2.push(6)
     node = Node(8)
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError) as err:
         test_list2.remove(node)
+    assert 'Node not in list.' in str(err)

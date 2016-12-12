@@ -62,3 +62,14 @@ class LinkedList(object):
                 return True
             current = current.next
         raise ValueError("Node not in list.")
+
+    def display(self):
+        """Display all elements in a linked list."""
+        current = self.head
+        result = "("
+        while current is not None:
+            result = result + str(current.data) + ","
+            current = current.next
+        result[-1] = ")"
+        print(result)
+        return result
