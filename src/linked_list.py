@@ -41,3 +41,12 @@ class LinkedList(object):
             count += 1
             current = current.next
         return count + 1
+
+    def search(self, val):
+        """Return node with data value of val."""
+        current = self.head
+        while current is not None:
+            if current.data == val:
+                return current
+            current = current.next
+        return None
