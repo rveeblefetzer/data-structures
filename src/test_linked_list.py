@@ -82,3 +82,19 @@ def test_pop_from_list_return_value():
     test_list = LinkedList(node)
     test_list.push(4)
     assert test_list.pop() == 4
+
+
+def test_size_returns_length_of_list():
+    """Test that size returns the length of the linked list."""
+    from linked_list import LinkedList, Node
+    node = Node(2)
+    test_list = LinkedList(node)
+    test_list.push(4)
+    assert test_list.size() == 2
+
+
+def test_size_of_empty_list():
+    """Test that empty list returns size of zero."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    assert test_list.size() == 0
