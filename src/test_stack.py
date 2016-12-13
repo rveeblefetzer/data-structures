@@ -62,3 +62,22 @@ def test_pop_returns_value(test_stack):
     popped_value = test_stack.pop()
     assert popped_value == 4
 
+
+def test_stack_size_of_empty(test_stack):
+    """Test empty stack size is 0."""
+    assert test_stack._size() == 0
+
+
+def test_stack_size_of_non_empty(test_stack):
+    """Test empty stack size is 0."""
+    test_stack.push(5)
+    assert test_stack._size() == 1
+
+
+def test_is_empty_of_empty(test_stack):
+    assert test_stack._is_empty()
+
+
+def test_is_empty_of_populated_stack(test_stack):
+    test_stack.push(4)
+    assert test_stack._is_empty() == False

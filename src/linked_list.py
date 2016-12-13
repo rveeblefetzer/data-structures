@@ -80,5 +80,12 @@ class LinkedList(object):
                 result += ", "
             current = current.next
         result += ')'
-        print(result)
         return result
+
+    def __len__(self):
+        """Set length to value of size."""
+        return self.size()
+
+    def __repr__(self):
+        """Call self.display when accessing __repr__."""
+        return self.display()
