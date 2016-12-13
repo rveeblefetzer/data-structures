@@ -54,3 +54,11 @@ def test_popping_populated_list(test_stack):
     test_stack.push(4)
     test_stack.pop()
     assert test_stack._stack.head is None
+
+
+def test_pop_returns_value(test_stack):
+    """Test pop returns proper value."""
+    test_stack.push(4)
+    popped_value = test_stack.pop()
+    assert popped_value == 4
+
