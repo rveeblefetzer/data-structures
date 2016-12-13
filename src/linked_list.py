@@ -13,15 +13,28 @@ class Node(object):
 class LinkedList(object):
     """Create linked lists."""
 
-    def __init__(self, head=None):
-        """Instantiate objects with a head defaulted to None."""
-        if isinstance(head, list):
-            node = Node(head[0])
-            self.head = node
-            for i in range(1, len(head)):
-                self.push(head[i])
-        else:
-            self.head = head
+    # def __init__(self, head=None):
+    #     """Instantiate objects with a head defaulted to None."""
+    #     if isinstance(head, list):
+    #         node = Node(head[0])
+    #         self.head = node
+    #         for i in range(1, len(head)):
+    #             self.push(head[i])
+    #     else:
+    #         self.head = head
+
+    def __init__(self, iterable=None):
+        """Instantiate objects wi."""
+        self.head = None
+        if iterable and hasattr(iterable, "__iter__"):
+            for value in iterable:
+                self.push(value)
+        # for py27
+        elif iterable and isinstance(iterable, str):
+            for char in iterable:
+                self.push(char)
+        elif iterable:
+            raise TypeError
 
     def push(self, val):
         """Push elements into list."""

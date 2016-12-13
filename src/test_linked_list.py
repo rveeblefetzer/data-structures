@@ -1,6 +1,12 @@
 """Test for singly linked list from link_list.py."""
 import pytest
 
+ITER_TABLE = [
+    ['string', "('g', 'n', 'i', 'r', 't', 's')"],
+    [[1, 2, 3], "(3, 2, 1)"],
+    [(1, 2, 3), "(3, 2, 1)"],
+]
+
 
 def test_node_init_data():
     """Test that Node constructor works."""
@@ -33,18 +39,26 @@ def test_linked_list_init_none():
 
 def test_linked_list_init_node():
     """Test that link_list initializes empty."""
-    from linked_list import LinkedList, Node
+    from linked_list import LinkedList
     # from linked_list import Node
-    node = Node(2)
-    test_list = LinkedList(node)
-    assert test_list.head == node
+    test_list = LinkedList()
+    test_list.push(2)
+    assert test_list.head.data == 2
 
 
-def test_multiple_arg_init():
+@pytest.mark.parametrize("iterable, result", ITER_TABLE)
+def test_multiple_arg_init(iterable, result):
     """Test that multiple iterables are allowed as arguments."""
     from linked_list import LinkedList
-    test_list = LinkedList([1, 2, 3])
-    assert test_list.display() == "(3, 2, 1)"
+    test_list = LinkedList(iterable)
+    assert test_list.display() == result
+
+
+def test_not_iterable_type_passed_to_init():
+    """Test that non iterable types passed to init raise type error."""
+    from linked_list import LinkedList
+    with pytest.raises(TypeError):
+        test_list = LinkedList(4)
 
 
 def test_push_to_empty_list():
@@ -57,27 +71,27 @@ def test_push_to_empty_list():
 
 def test_push_to_nonempty_list_head():
     """Test that push adds to the front of a list."""
-    from linked_list import LinkedList, Node
-    node = Node(2)
-    test_list = LinkedList(node)
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(2)
     test_list.push(4)
     assert test_list.head.data == 4
 
 
 def test_push_to_nonempty_list_next():
     """Test that push adds to the front of a list."""
-    from linked_list import LinkedList, Node
-    node = Node(2)
-    test_list = LinkedList(node)
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(2)
     test_list.push(4)
     assert test_list.head.next.data == 2
 
 
 def test_pop_from_list():
     """Test that pop removes head from list."""
-    from linked_list import LinkedList, Node
-    node = Node(2)
-    test_list = LinkedList(node)
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(2)
     test_list.push(4)
     test_list.pop()
     assert test_list.head.data == 2
@@ -85,18 +99,18 @@ def test_pop_from_list():
 
 def test_pop_from_list_return_value():
     """Test that pop returns value of current head from list."""
-    from linked_list import LinkedList, Node
-    node = Node(2)
-    test_list = LinkedList(node)
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(2)
     test_list.push(4)
     assert test_list.pop() == 4
 
 
 def test_size_returns_length_of_list():
     """Test that size returns the length of the linked list."""
-    from linked_list import LinkedList, Node
-    node = Node(2)
-    test_list = LinkedList(node)
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(2)
     test_list.push(4)
     assert test_list.size() == 2
 
