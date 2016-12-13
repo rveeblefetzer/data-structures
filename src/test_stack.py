@@ -2,12 +2,15 @@
 
 import pytest
 
+
 @pytest.fixture
-def new_stack():
-    from stack import stack
+def test_stack():
+    """Create test stack for testing stack functionality."""
+    from stack import Stack
     test_stack = Stack()
+    return test_stack
 
 
 def test_init_stack(test_stack):
     """Test that stack is initialized."""
-    assert test_stack.data is None
+    assert test_stack._stack.head is None
