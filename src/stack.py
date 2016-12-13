@@ -6,9 +6,9 @@ from linked_list import LinkedList
 class Stack(object):
     """Class to represent stack data structure."""
 
-    def __init__(self):
+    def __init__(self, iterable=None):
         """Initialize a stack as a instance of a LinkedList."""
-        self._stack = LinkedList()
+        self._stack = LinkedList(iterable)
 
     def push(self, val):
         """Add a value to the top of the stack."""
