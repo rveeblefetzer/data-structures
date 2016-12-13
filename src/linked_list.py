@@ -15,7 +15,13 @@ class LinkedList(object):
 
     def __init__(self, head=None):
         """Instantiate objects with a head defaulted to None."""
-        self.head = head
+        if isinstance(head, list):
+            node = Node(head[0])
+            self.head = node
+            for i in range(1, len(head)):
+                self.push(head[i])
+        else:
+            self.head = head
 
     def push(self, val):
         """Push elements into list."""
@@ -68,8 +74,13 @@ class LinkedList(object):
         current = self.head
         result = "("
         while current is not None:
-            result = result + str(current.data) + ","
+            if isinstance(current.data, str):
+                result = result + "'" + current.data + "'"
+            else:
+                result = result + str(current.data)
+            if current.next is not None:
+                result += ", "
             current = current.next
-        result[-1] = ")"
+        result += ')'
         print(result)
         return result

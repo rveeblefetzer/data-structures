@@ -40,6 +40,13 @@ def test_linked_list_init_node():
     assert test_list.head == node
 
 
+def test_multiple_arg_init():
+    """Test that multiple iterables are allowed as arguments."""
+    from linked_list import LinkedList
+    test_list = LinkedList([1, 2, 3])
+    assert test_list.display() == "(3, 2, 1)"
+
+
 def test_push_to_empty_list():
     """Test that a new node can be added to an empty list."""
     from linked_list import LinkedList
@@ -114,44 +121,54 @@ def test_search_val():
 def test_search_unknown_val():
     """Test to search for element not in list."""
     from linked_list import LinkedList
-    test_list2 = LinkedList()
-    test_list2.push(4)
-    test_list2.push(6)
-    test_list2.push(8)
-    assert test_list2.search(12) is None
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
+    test_list.push(8)
+    assert test_list.search(12) is None
 
 
 def test_remove():
     """Test for removing element from list."""
     from linked_list import LinkedList, Node
     node = Node(6)
-    test_list2 = LinkedList()
-    test_list2.push(4)
-    test_list2.push(6)
-    test_list2.push(8)
-    test_list2.remove(node)
-    assert test_list2.head.next.data == 4
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
+    test_list.push(8)
+    test_list.remove(node)
+    assert test_list.head.next.data == 4
 
 
 def test_remove_head():
     """Test for removing head element from list."""
     from linked_list import LinkedList, Node
     node = Node(8)
-    test_list2 = LinkedList()
-    test_list2.push(4)
-    test_list2.push(6)
-    test_list2.push(8)
-    test_list2.remove(node)
-    assert test_list2.head.data == 6
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
+    test_list.push(8)
+    test_list.remove(node)
+    assert test_list.head.data == 6
 
 
 def test_remove_unknown():
     """Test for removing unknown element."""
     from linked_list import LinkedList, Node
-    test_list2 = LinkedList()
-    test_list2.push(4)
-    test_list2.push(6)
+    test_list = LinkedList()
+    test_list.push(4)
+    test_list.push(6)
     node = Node(8)
     with pytest.raises(ValueError) as err:
-        test_list2.remove(node)
+        test_list.remove(node)
     assert 'Node not in list.' in str(err)
+
+
+def test_display():
+    """Test for displaying linked list as tuple."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(401)
+    test_list.push('Python')
+    test_list.push('Code Fellows')
+    assert test_list.display() == "('Code Fellows', 'Python', 401)"
