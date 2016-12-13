@@ -87,6 +87,14 @@ def test_push_to_nonempty_list_next():
     assert test_list.head.next.data == 2
 
 
+def test_pop_from_empty_list():
+    """Test that pop on empty list raises index error."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    with pytest.raises(IndexError):
+        test_list.pop()
+
+
 def test_pop_from_list():
     """Test that pop removes head from list."""
     from linked_list import LinkedList
