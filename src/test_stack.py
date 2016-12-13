@@ -39,4 +39,4 @@ def test_push_to_non_empty_stack(test_stack):
 def test_init_stack_w_iterables(iterable, result):
     from stack import Stack
     test_stack = Stack(iterable)
-    assert test_stack._stack.display == result
+    assert test_stack._stack.display() == result
