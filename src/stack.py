@@ -16,4 +16,4 @@ class Stack(object):
 
     def pop(self):
         """Remove the head from the LinkedList and return that value."""
-        self._stack.pop()
+        return self._stack.pop()
