@@ -16,6 +16,7 @@ class LinkedList(object):
     def __init__(self, iterable=None):
         """Instantiate objects wi."""
         self.head = None
+        self._size = 0
         if iterable and hasattr(iterable, "__iter__"):
             for value in iterable:
                 self.push(value)
@@ -31,6 +32,7 @@ class LinkedList(object):
         node = Node(val)
         node.next = self.head
         self.head = node
+        self._size += 1
 
     def pop(self):
         """Remove head element and return value."""
@@ -38,18 +40,12 @@ class LinkedList(object):
             raise IndexError("Cannot pop from empty.")
         temp_data = self.head.data
         self.head = self.head.next
+        self._size -= 1
         return temp_data
 
     def size(self):
         """Return length of list."""
-        count = 0
-        current = self.head
-        if self.head is None:
-            return 0
-        while current.next is not None:
-            count += 1
-            current = current.next
-        return count + 1
+        return self._size
 
     def search(self, val):
         """Return node with data value of val."""
