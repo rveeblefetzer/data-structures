@@ -37,11 +37,20 @@ def test_push_to_non_empty_stack(test_stack):
 
 @pytest.mark.parametrize("iterable, result", ITER_TABLE)
 def test_init_stack_w_iterables(iterable, result):
+    """Test that a stack can init with iterable."""
     from stack import Stack
     test_stack = Stack(iterable)
     assert test_stack._stack.display() == result
 
 
 def test_popping_empty_list(test_stack):
+    """Test pop method on empty list."""
     with pytest.raises(IndexError):
         test_stack.pop()
+
+
+def test_popping_populated_list(test_stack):
+    """Test popping a list with nodes/values."""
+    test_stack.push(4)
+    test_stack.pop()
+    assert test_stack._stack.head is None
