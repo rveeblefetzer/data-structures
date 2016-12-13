@@ -40,3 +40,8 @@ def test_init_stack_w_iterables(iterable, result):
     from stack import Stack
     test_stack = Stack(iterable)
     assert test_stack._stack.display() == result
+
+
+def test_popping_empty_list(test_stack):
+    with pytest.raises(IndexError):
+        test_stack.pop()
