@@ -4,7 +4,8 @@
 
 class Node(object):
     """Implementation of a Node for a doubly-linked list."""
-        def __init__(self, data, after=None, before=None):
+
+    def __init__(self, data=None, after=None, before=None):
         """Initialize Node instance."""
         self.data = data
         self.after = after
