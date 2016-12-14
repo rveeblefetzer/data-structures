@@ -132,5 +132,5 @@ def test_append_to_populated_dll_after(pop_dll):
 
 def test_append_to_populated_dll_size(pop_dll):
     """Test that append to populated dll returns size incremented by one."""
-    empty_dll.append(6)
-    assert empty_dll._size == 2
+    pop_dll.append(6)
+    assert pop_dll._size == 2
