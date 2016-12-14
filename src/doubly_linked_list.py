@@ -45,8 +45,9 @@ class Dll(object):
         node = Node(val)
         if self.head:
             node.before = self.head
+            self.head.after = node
         self.head = node
-        self._size += 1
+        self.tail = node
 
     def append(self, val):
         """Will append the value val at the tail of the list."""
