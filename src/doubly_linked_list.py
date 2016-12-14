@@ -77,7 +77,7 @@ class Dll(object):
             self.head = node
         self._size += 1
 
-    def _size(self):
+    def _get_size(self):
         """Return length of dll."""
         return self._size
 

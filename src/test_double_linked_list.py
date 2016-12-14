@@ -13,16 +13,23 @@ def empty_dll():
 
 @pytest.fixture
 def pop_dll(empty_dll):
-    """Fixture for one node populated dll."""
+    """Fixture for single node dll."""
     empty_dll.push(6)
     return empty_dll
 
 
 @pytest.fixture
 def pop_dll_2(pop_dll):
-    """Fixture for one node populated dll."""
+    """Fixture for two-node, populated dll."""
     pop_dll.push(5)
     return pop_dll
+
+@pytest.fixture
+def pop_dll_3(pop_dll_2):
+    """Fixture for three-node dll."""
+    pop_dll_2.append(7)
+    return pop_dll_2
+
 
 # node tests
 
@@ -167,6 +174,12 @@ def test_pop_returns_value(pop_dll):
     """Test that pop returns value of head node."""
     assert pop_dll.pop() == 6
 
+
+def test_pop_size_adjusts(pop_dll_2):
+    """Test that pop adjusts size by -1."""
+    pop_dll_2.pop()
+    assert pop_dll_2._get_size() == 1
+
 # shift() tests
 
 
@@ -192,3 +205,20 @@ def test_shift_returns_value(pop_dll):
     """Test that shift returns value of head node."""
     assert pop_dll.shift() == 6
 
+
+def test_shift_size_adjusts(pop_dll_2):
+    """Test that shift adjusts size by -1."""
+    pop_dll_2.shift()
+    assert pop_dll_2._get_size() == 1
+
+# remove() tests
+
+def test_remove_from_empty_list(pop_dll):
+    """Test that remove from empty list doesn't work."""
+    with pytest.raises(IndexError):
+        empty_dll.remove(9)
+
+def test_remove_from_list_middle(pop_dll_3):
+    """Test that remove from middle of list."""
+    pop_dll_3.remove(6)
+    assert pop_dll_3.head.after.data == 7
