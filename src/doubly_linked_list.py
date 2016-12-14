@@ -109,7 +109,23 @@ class Dll(object):
         self._size -= 1
         return temp_data
 
-
     def remove(self, val):
         """Will remove the first instance of val found in the list."""
-        pass
+        if self.head is None:
+            raise(IndexError)
+        current = self.head
+        found = False
+        while current is not self.tail:
+            if current.data == val:
+                found = True
+                if current.before is None:
+                    self.head = current.after
+                else:
+                    current.before.after = current.after
+                if current.after is None:
+                    self.tail = current.before
+                else:
+                    current.after.before = current.before
+            current = current.before
+        if not found:
+            raise(IndexError)

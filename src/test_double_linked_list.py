@@ -216,9 +216,9 @@ def test_shift_size_adjusts(pop_dll_2):
 def test_remove_from_empty_list(pop_dll):
     """Test that remove from empty list doesn't work."""
     with pytest.raises(IndexError):
-        empty_dll.remove(9)
+        pop_dll.remove(9)
 
 def test_remove_from_list_middle(pop_dll_3):
     """Test that remove from middle of list."""
     pop_dll_3.remove(6)
-    assert pop_dll_3.head.after.data == 7
+    assert pop_dll_3.head.before.data == 7
