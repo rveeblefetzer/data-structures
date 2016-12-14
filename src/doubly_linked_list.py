@@ -46,6 +46,7 @@ class Dll(object):
         if self.head:
             node.before = self.head
             self.head.after = node
+            self.head = node
         self.head = node
         self.tail = node
 
