@@ -50,6 +50,11 @@ def test_dll_init_empty_head(empty_dll):
     assert empty_dll.head is None
 
 
+def test_dll_init_empty_head(empty_dll):
+    """Test dll is initialized empty size."""
+    assert empty_dll._size is 0
+
+
 def test_push_to_empty_dll_head(empty_dll):
     """Test push to empty dll adds new node with head."""
     empty_dll.push(6)
@@ -60,6 +65,12 @@ def test_push_to_empty_dll_tail(empty_dll):
     """Test push to empty dll adds new node with tail."""
     empty_dll.push(6)
     assert empty_dll.tail.data == 6
+
+
+def test_push_to_empty_dll_size(empty_dll):
+    """Test push to empty dll adds new node with head."""
+    empty_dll.push(6)
+    assert empty_dll._size == 1
 
 
 def test_push_to_populated_array(pop_dll):
@@ -96,3 +107,5 @@ def test_append_to_populated_array_next(pop_dll):
     """Test that append moves Nodes after tail of a populated dll."""
     pop_dll.append(5)
     assert pop_dll.tail.after.data == 6
+
+
