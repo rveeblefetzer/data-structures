@@ -194,3 +194,20 @@ def test_display():
     test_list.push('Python')
     test_list.push('Code Fellows')
     assert test_list.display() == "('Code Fellows', 'Python', 401)"
+
+
+def test_display_repr():
+    """Test for displaying linked list as tuple with repr."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    test_list.push(401)
+    test_list.push('Python')
+    test_list.push('Code Fellows')
+    assert repr(test_list) == "('Code Fellows', 'Python', 401)"
+
+
+def test_len_of_none():
+    """Test that len function works."""
+    from linked_list import LinkedList
+    test_list = LinkedList()
+    assert len(test_list) == 0

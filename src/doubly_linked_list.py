@@ -115,17 +115,20 @@ class Dll(object):
             raise(IndexError)
         current = self.head
         found = False
-        while current is not self.tail:
+        while current is not None:
+            print(current.data)
             if current.data == val:
+                self._size -= 1
                 found = True
-                if current.before is None:
-                    self.head = current.after
-                else:
-                    current.before.after = current.after
                 if current.after is None:
-                    self.tail = current.before
+                    self.head = current.before
                 else:
                     current.after.before = current.before
+                if current.before is None:
+                    self.tail = current.after
+                else:
+                    current.before.after = current.after
             current = current.before
         if not found:
             raise(IndexError)
+

@@ -24,6 +24,7 @@ def pop_dll_2(pop_dll):
     pop_dll.push(5)
     return pop_dll
 
+
 @pytest.fixture
 def pop_dll_3(pop_dll_2):
     """Fixture for three-node dll."""
@@ -213,12 +214,38 @@ def test_shift_size_adjusts(pop_dll_2):
 
 # remove() tests
 
-def test_remove_from_empty_list(pop_dll):
+
+def test_remove_from_empty_list(empty_dll):
     """Test that remove from empty list doesn't work."""
     with pytest.raises(IndexError):
-        pop_dll.remove(9)
+        empty_dll.remove(9)
+
 
 def test_remove_from_list_middle(pop_dll_3):
     """Test that remove from middle of list."""
     pop_dll_3.remove(6)
     assert pop_dll_3.head.before.data == 7
+
+
+def test_remove_from_list_head(pop_dll_3):
+    """Test that remove from head of list."""
+    pop_dll_3.remove(5)
+    assert pop_dll_3.head.data == 6
+
+
+def test_remove_from_list_tail(pop_dll_3):
+    """Test that remove from tail of list."""
+    pop_dll_3.remove(7)
+    assert pop_dll_3.tail.data == 6
+
+
+def test_remove_unincluded_from_list(pop_dll_3):
+    """Test remove from nonincluded value fails."""
+    with pytest.raises(IndexError):
+        pop_dll_3.remove('lunch')
+
+
+def test_remove_check_size(pop_dll_3):
+    """Test that remove from tail of list."""
+    pop_dll_3.remove(7)
+    assert pop_dll_3._get_size() == 2

@@ -75,9 +75,16 @@ def test_stack_size_of_non_empty(test_stack):
 
 
 def test_is_empty_of_empty(test_stack):
+    """Test stack is empty."""
     assert test_stack._is_empty()
 
 
 def test_is_empty_of_populated_stack(test_stack):
+    """Test stack is not empty."""
     test_stack.push(4)
-    assert test_stack._is_empty() == False
+    assert test_stack._is_empty() is False
+
+
+def test_len_of_stack(test_stack):
+    """Test len function."""
+    assert len(test_stack) == 0
