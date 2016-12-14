@@ -4,10 +4,11 @@
 
 class Node(object):
     """Implementation of a Node for a doubly-linked list."""
-
-    def __init__(self):
-        """Initialize a Node for doubly linked list."""
-        pass
+        def __init__(self, data, after=None, before=None):
+        """Initialize Node instance."""
+        self.data = data
+        self.after = after
+        self.before = before
 
 
 class Dll(object):
