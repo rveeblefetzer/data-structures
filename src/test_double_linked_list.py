@@ -17,6 +17,13 @@ def pop_dll(empty_dll):
     empty_dll.push(6)
     return empty_dll
 
+
+@pytest.fixture
+def pop_dll_2(pop_dll):
+    """Fixture for one node populated dll."""
+    pop_dll.push(5)
+    return pop_dll
+
 # node tests
 
 
@@ -134,3 +141,20 @@ def test_append_to_populated_dll_size(pop_dll):
     """Test that append to populated dll returns size incremented by one."""
     pop_dll.append(6)
     assert pop_dll._size == 2
+
+# pop tests
+
+
+def test_pop_from_empty(empty_dll):
+    with pytest.raises(IndexError):
+        empty_dll.pop()
+
+def test_pop_from_list_of_one(pop_dll):
+    pop_dll.pop()
+    assert pop_dll.head is None and pop_dll.tail is None
+
+
+def test_pop_from_list_greater_than_one(pop_dll_2):
+    pop_dll_2.pop()
+    assert pop_dll_2.head.data == 6
+
