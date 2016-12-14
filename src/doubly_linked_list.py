@@ -4,6 +4,13 @@
 A populated list will have a head and tail, and each node
 points to nodes before and after (except for head and tail nodes).
 
+Methods include:
+push(val): Inserts the value val at the head of the list.
+append(val): Appends the value val at the tail of the list.
+pop(): Pops first value off head of list and returns it.
+shift(): Removes last value from tail of list and returns it.
+remove(val): Removes first instance of val in list, starting from head.
+    If val is not present, it raises an exception.
 """
 
 
@@ -78,8 +85,12 @@ class Dll(object):
         """Pop the first value off the head of the list and return it."""
         if self.head is None:
             raise IndexError("Cannot pop from empty.")
+        elif self._size == 1:
+            self.head = None
+            self.tail = None
         self.head.before.after = None
-        self.head.before = self.head
+        self.head = self.head.before
+        self._size += 1
 
     def shift(self):
         """Remove the last value from the tail of the list and return it."""
