@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Implementation of a doubly-linked list."""
+"""Implementation of a doubly-linked list.
+
+A populated list will have a head and tail, and each node
+points to nodes before and after (except for head and tail nodes).
+
+"""
 
 
 class Node(object):
@@ -51,7 +56,7 @@ class Dll(object):
         else:
             self.head = node
             self.tail = node
-        self._size += 1
+        self._size -= 1
 
     def append(self, val):
         """Will append the value val at the tail of the list."""
@@ -63,7 +68,7 @@ class Dll(object):
         else:
             self.tail = node
             self.head = node
-        self._size -= 1
+        self._size += 1
 
     def _size(self):
         """Return length of dll."""
