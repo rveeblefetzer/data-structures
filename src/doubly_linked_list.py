@@ -46,12 +46,19 @@ class Dll(object):
         if self.head:
             node.before = self.head
             self.head.after = node
+            self.head = node
         self.head = node
         self.tail = node
 
     def append(self, val):
         """Will append the value val at the tail of the list."""
-        pass
+        node = Node(val)
+        if self.tail:
+            node.after = self.tail
+            self.tail.before = node
+            self.tail = node
+        self.tail = node
+        self.head = node
 
     def pop(self):
         """Pop the first value off the head of the list and return it."""
