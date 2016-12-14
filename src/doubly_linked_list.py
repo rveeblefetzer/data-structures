@@ -92,12 +92,23 @@ class Dll(object):
         else:
             self.head.before.after = None
             self.head = self.head.before
-            self._size += 1
+        self._size -= 1
         return temp_data
 
     def shift(self):
         """Remove the last value from the tail of the list and return it."""
-        pass
+        if self.tail is None:
+            raise IndexError("Cannot pop from empty.")
+        temp_data = self.tail.data
+        if self._size == 1:
+            self.head = None
+            self.tail = None
+        else:
+            self.tail.after.before = None
+            self.tail = self.tail.after
+        self._size -= 1
+        return temp_data
+
 
     def remove(self, val):
         """Will remove the first instance of val found in the list."""
