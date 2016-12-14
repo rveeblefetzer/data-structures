@@ -39,6 +39,7 @@ class Dll(object):
         """Initialize a doubly-linked-list."""
         self.head = None
         self.tail = None
+        self._size = 0
 
     def push(self, val):
         """Will insert the value val at the head of the list."""
@@ -47,16 +48,33 @@ class Dll(object):
             node.before = self.head
             self.head.after = node
             self.head = node
-        self.head = node
-        self.tail = node
+        else:
+            self.head = node
+            self.tail = node
+        self._size += 1
 
     def append(self, val):
         """Will append the value val at the tail of the list."""
-        pass
+        node = Node(val)
+        if self.tail:
+            node.after = self.tail
+            self.tail.before = node
+            self.tail = node
+        else:
+            self.tail = node
+            self.head = node
+        self._size -= 1
+
+    def _size(self):
+        """Return length of dll."""
+        return self._size
 
     def pop(self):
         """Pop the first value off the head of the list and return it."""
-        pass
+        if self.head is None:
+            raise IndexError("Cannot pop from empty.")
+        self.head.before.after = None
+        self.head.before = self.head
 
     def shift(self):
         """Remove the last value from the tail of the list and return it."""
