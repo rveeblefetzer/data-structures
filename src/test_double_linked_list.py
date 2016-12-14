@@ -146,15 +146,49 @@ def test_append_to_populated_dll_size(pop_dll):
 
 
 def test_pop_from_empty(empty_dll):
+    """Test pop can't called on empty list."""
     with pytest.raises(IndexError):
         empty_dll.pop()
 
+
 def test_pop_from_list_of_one(pop_dll):
+    """Test pop from list of one empties list."""
     pop_dll.pop()
     assert pop_dll.head is None and pop_dll.tail is None
 
 
 def test_pop_from_list_greater_than_one(pop_dll_2):
+    """Test pop from multiple-item list pops/reassigns head, returns val."""
     pop_dll_2.pop()
     assert pop_dll_2.head.data == 6
+
+
+def test_pop_returns_value(pop_dll):
+    """Test that pop returns value of head node."""
+    assert pop_dll.pop() == 6
+
+# shift() tests
+
+
+def test_shift_from_empty(empty_dll):
+    """Test shift can't be called on empty list."""
+    with pytest.raises(IndexError):
+        empty_dll.shift()
+
+
+def test_shift_from_list_of_one(pop_dll):
+    """Test shift from list of one empties list."""
+    pop_dll.shift()
+    assert pop_dll.head is None and pop_dll.tail is None
+
+
+def test_shift_from_list_greater_than_one(pop_dll_2):
+    """Test shift from multiple-item list reassigns tail, returns val."""
+    pop_dll_2.shift()
+    assert pop_dll_2.head.data == 5
+
+
+def test_shift_returns_value(pop_dll):
+    """Test that shift returns value of head node."""
+    assert pop_dll.shift() == 6
 

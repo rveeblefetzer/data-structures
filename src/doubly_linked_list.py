@@ -85,12 +85,15 @@ class Dll(object):
         """Pop the first value off the head of the list and return it."""
         if self.head is None:
             raise IndexError("Cannot pop from empty.")
-        elif self._size == 1:
+        temp_data = self.head.data
+        if self._size == 1:
             self.head = None
             self.tail = None
-        self.head.before.after = None
-        self.head = self.head.before
-        self._size += 1
+        else:
+            self.head.before.after = None
+            self.head = self.head.before
+            self._size += 1
+        return temp_data
 
     def shift(self):
         """Remove the last value from the tail of the list and return it."""
