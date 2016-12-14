@@ -42,7 +42,11 @@ class Dll(object):
 
     def push(self, val):
         """Will insert the value val at the head of the list."""
-        pass
+        node = Node(val)
+        if self.head:
+            node.before = self.head
+        self.head = node
+        self._size += 1
 
     def append(self, val):
         """Will append the value val at the tail of the list."""
