@@ -43,3 +43,15 @@ def test_dll_init_empty_head(empty_dll):
     """Test dll is initialized empty."""
     assert empty_dll.head is None
 
+
+def test_push_to_empty_dll_head(empty_dll):
+    """Test push to empty dll adds new node with head."""
+    empty_dll.push(6)
+    assert empty_dll.head.data == 6
+
+
+def test_push_to_empty_dll_tail(empty_dll):
+    """Test push to empty dll adds new node with tail."""
+    empty_dll.push(6)
+    assert empty_dll.tail.data == 6
+
