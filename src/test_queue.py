@@ -22,18 +22,9 @@ def one_elem_queue(empty_queue):
 @pytest.fixture
 def two_elem_queue(one_elem_queue):
     """Fixture for two-node, populated dll."""
-    one_elem_queue.enqueue(5)
+    one_elem_queue.enqueue("Bellingham")
     return one_elem_queue
 
-
-@pytest.fixture
-def three_elem_queue(two_elem_queue):
-    """Fixture for three-node queue."""
-    two_elem_queue.enqueue(7)
-    return two_elem_queue
-
-
-# node tests
 
 def test_queue_exists_and_empty(empty_queue):
     """Test that node data is none after initialization."""
@@ -75,5 +66,21 @@ def test_dequeue_from_one_elem_list(one_elem_queue):
 def test_head_on_dequeue_from_two_elem_list(two_elem_queue):
     """Test head element removed from queue and size adjusted."""
     two_elem_queue.dequeue()
-    assert two_elem_queue._queue.head.data == 5
+    assert two_elem_queue._queue.head.data == "Bellingham"
     assert two_elem_queue.size() == 1
+
+
+def test_peek_empty_queue(empty_queue):
+    """Test that peek returns None."""
+    assert empty_queue.peek() is None
+
+
+def test_peek_queue_of_one(two_elem_queue):
+    """Test that peek returns value."""
+    assert two_elem_queue.peek() == 'Seattle'
+    assert two_elem_queue._queue.head.data == "Seattle"
+
+
+def test_size_queue_of_two(two_elem_queue):
+    """Check size for queue of two."""
+    assert two_elem_queue.size() == 2
