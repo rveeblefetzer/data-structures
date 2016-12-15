@@ -37,10 +37,23 @@ def three_elem_queue(two_elem_queue):
 
 def test_queue_exists_and_empty(empty_queue):
     """Test that node data is none after initialization."""
-    assert empty_queue._queue.head.data is None
+    assert empty_queue._queue.head is None
 
 
 def test_queue_has_no_head(empty_queue):
     """Test that initialized queue has no head."""
     empty_queue.enqueue("Seattle")
     assert empty_queue._queue.head.data == "Seattle"
+
+
+def test_enqueue_increments_size(one_elem_queue):
+    """Test that enqueing elemnt increases queue length."""
+    one_elem_queue.enqueue("Bellingham")
+    assert one_elem_queue.size() == 2
+
+
+def test_head_enqueuing_to_populated_list(one_elem_queue):
+    """Test head in populated list doesn't change on enqueue."""
+    one_elem_queue.enqueue("Tacoma")
+    assert one_elem_queue._queue.head.data == "Seattle"
+    assert one_elem_queue._queue.head.before.data == "Tacoma"
