@@ -1,0 +1,1 @@
+"""Implemetation of a queue data structure."""
