@@ -1,4 +1,10 @@
-"""Create a class for linked lists and a few methods to manipulate it."""
+"""Implementation of linked lists.
+
+This module makes two classes, Node and LinkedList, to manage linked lists.
+A populated list will have a head and tail, and each node points to the node
+following it, except for head nodes. Written by Marc Fieser and Rick Valenzuela
+at Code Fellows' 401 Advanced Python class, Seattle, December 2016.
+"""
 
 
 class Node(object):
@@ -11,10 +17,33 @@ class Node(object):
 
 
 class LinkedList(object):
-    """Create linked lists."""
+    """Implementation of linked lists.
+
+    Methods:
+
+    push(val) -
+        Will insert the value val at the head of the list
+
+    pop() -
+        Will pop the first value off the head of the list and return it.
+
+    size() -
+        Returns number of nodes in list.
+
+    search(val) -
+        Return node with value of parameter val.
+
+    remove(val)  -
+        Will remove the first instance of val found in the list,
+        starting from the head. If val is not present, it will raise
+        an appropriate Python exception.
+
+    display() -
+        Prints all elements in list.
+    """
 
     def __init__(self, iterable=None):
-        """Instantiate objects wi."""
+        """Instantiate LinkedList object, default empty or take iterable."""
         self.head = None
         self._size = 0
         if iterable:
@@ -47,7 +76,6 @@ class LinkedList(object):
     def search(self, val):
         """Return node with data value of val."""
         current = self.head
-        # import pdb; pdb.set_trace()
         while current is not None:
             if current.data == val:
                 return current

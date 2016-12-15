@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 """Implementation of a doubly-linked list.
 
-A populated list will have a head and tail, and each node
-points to nodes before and after (except for head and tail nodes).
-
-Methods include:
-push(val): Inserts the value val at the head of the list.
-append(val): Appends the value val at the tail of the list.
-pop(): Pops first value off head of list and returns it.
-shift(): Removes last value from tail of list and returns it.
-remove(val): Removes first instance of val in list, starting from head.
-    If val is not present, it raises an exception.
+This module makes two classes, Node and Dll, to manage a two-way linked list.
+ A populated list will have a head and tail, and each node points to nodes
+before and after (except for head and tail nodes). Written by Marc Fieser
+and Rick Valenzuela at Code Fellows' 401 Advanced Python class, Seattle,
+December 2016.
 """
 
 
@@ -131,4 +126,3 @@ class Dll(object):
             current = current.before
         if not found:
             raise(IndexError)
-
