@@ -13,51 +13,36 @@ class Node(object):
 class LinkedList(object):
     """Create linked lists."""
 
-    # def __init__(self, head=None):
-    #     """Instantiate objects with a head defaulted to None."""
-    #     if isinstance(head, list):
-    #         node = Node(head[0])
-    #         self.head = node
-    #         for i in range(1, len(head)):
-    #             self.push(head[i])
-    #     else:
-    #         self.head = head
-
     def __init__(self, iterable=None):
-        """Instantiate objects wi."""
+        """Initialize a linked list."""
         self.head = None
-        if iterable and hasattr(iterable, "__iter__"):
-            for value in iterable:
-                self.push(value)
-        # for py27
-        elif iterable and isinstance(iterable, str):
-            for char in iterable:
-                self.push(char)
-        elif iterable:
-            raise TypeError
+        self._size = 0
+        if iterable:
+            try:
+                for value in iterable:
+                    self.push(value)
+            except:
+                raise TypeError("Not an iterable")
 
     def push(self, val):
         """Push elements into list."""
         node = Node(val)
         node.next = self.head
         self.head = node
+        self._size += 1
 
     def pop(self):
         """Remove head element and return value."""
+        if self.head is None:
+            raise IndexError("Cannot pop from empty.")
         temp_data = self.head.data
         self.head = self.head.next
+        self._size -= 1
         return temp_data
 
     def size(self):
         """Return length of list."""
-        count = 0
-        current = self.head
-        if self.head is None:
-            return 0
-        while current.next is not None:
-            count += 1
-            current = current.next
-        return count + 1
+        return self._size
 
     def search(self, val):
         """Return node with data value of val."""
@@ -85,15 +70,22 @@ class LinkedList(object):
     def display(self):
         """Display all elements in a linked list."""
         current = self.head
-        result = "("
+        result = ["("]
         while current is not None:
             if isinstance(current.data, str):
-                result = result + "'" + current.data + "'"
+                result.append("'" + current.data + "'")
             else:
-                result = result + str(current.data)
+                result.append(str(current.data))
             if current.next is not None:
-                result += ", "
+                result.append(", ")
             current = current.next
-        result += ')'
-        print(result)
-        return result
+        result.append(')')
+        return ''.join(result)
+
+    def __len__(self):
+        """Set length to value of size."""
+        return self.size()
+
+    def __repr__(self):
+        """Call self.display when accessing __repr__."""
+        return self.display()
